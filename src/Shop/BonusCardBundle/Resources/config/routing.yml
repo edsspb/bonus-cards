@@ -1,0 +1,3 @@
+shop_bonus_card_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: ShopBonusCardBundle:Default:index }
