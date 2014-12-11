@@ -9,3 +9,5 @@
 /.idea/
 sftp-config.json
 Thumbs.db
+/bonus-card.sublime-workspace
+*.sublime-project
