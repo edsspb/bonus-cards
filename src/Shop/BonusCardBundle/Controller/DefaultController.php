@@ -2,12 +2,17 @@
 
 namespace Shop\BonusCardBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller,
+	Symfony\Component\Debug\Debug,
+	Symfony\Component\DependencyInjection\ContainerInterface,
+	Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
+    Sensio\Bundle\FrameworkExtraBundle\Configuration\Template,
+    Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class DefaultController extends Controller
 {
-    public function indexAction($name)
-    {
-        return $this->render('ShopBonusCardBundle:Default:index.html.twig', array('name' => $name));
+	public function setContainer(ContainerInterface $container = null)
+	{
+        parent::setContainer($container);
     }
 }

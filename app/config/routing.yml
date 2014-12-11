@@ -1,9 +1,8 @@
 shop_bonus_card:
     resource: "@ShopBonusCardBundle/Resources/config/routing.yml"
-    prefix:   /
 
 admin_login_check:
     path: /admin/login_check
 
 admin_logout:
-    path:     /admin/logout
+    path: /admin/logout

@@ -12,9 +12,9 @@ doctrine:
             default:
                 driver:   pdo_mysql
                 host:     localhost
-                dbname:   sftest
-                user:     root
-                password: MNbRQsQfo7
+                dbname:   bonuscard
+                user:     bonuscard-local
+                password: 4ZK45N4CuexJRHNh
                 charset:  UTF8
                 logging:    %kernel.debug%
                 profiling:  %kernel.debug%
