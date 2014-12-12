@@ -10,9 +10,7 @@ class ShopBonusCardBundle extends Bundle
 	public function boot()
     {
         if (!Type::hasType("enumcardstatus")) {
-        	$em = $this->container->get('doctrine.orm.entity_manager');
         	Type::addType('enumcardstatus', 'Shop\BonusCardBundle\DBAL\EnumCardStatusType');
-        	$em->getConnection()->getDatabasePlatform()->registerDoctrineTypeMapping('EnumCardStatus','enumcardstatus');
         }
     }
 }

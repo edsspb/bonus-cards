@@ -20,6 +20,9 @@ class CardController extends DefaultController
     */
     public function indexAction()
     {
+        $em = $this->container->get('doctrine.orm.entity_manager');
+        $this->getDoctrine()->getRepository('ShopBonusCardBundle:Cards');
+
         echo 'test'; die();
     }
 }

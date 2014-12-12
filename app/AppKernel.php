@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Ornicar\ApcBundle\OrnicarApcBundle(),
             new Shop\BonusCardBundle\ShopBonusCardBundle(),
+            new Shop\ShopBundle\ShopShopBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev'))) {
