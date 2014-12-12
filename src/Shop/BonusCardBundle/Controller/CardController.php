@@ -15,14 +15,39 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class CardController extends DefaultController
 {
    /**
-    * @Route("/", name="main")
+    * @Route("/auth", name="admin_auth")
     * @Template()
     */
-    public function indexAction()
+    public function authAction(Request $request)
     {
-        $em = $this->container->get('doctrine.orm.entity_manager');
-        $this->getDoctrine()->getRepository('ShopBonusCardBundle:Cards');
+        if (false !== $this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            return $this->redirect($this->generateUrl('card_main'));
+        }
 
-        echo 'test'; die();
+        $form = $this->createForm('authform', null, array(
+            'action' => $this->generateUrl('admin_login_check'),
+            'method' => 'POST',
+        ));
+
+        $session = $request->getSession();
+
+        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR))
+            $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
+        else
+            $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
+
+        return [
+            'error' => $error,
+            'form' => $form->createView()
+        ];
+    }
+
+    /**
+    * @Route("/", name="card_main")
+    * @Template()
+    */
+    public function indexAction(Request $request)
+    {
+        return [];
     }
 }

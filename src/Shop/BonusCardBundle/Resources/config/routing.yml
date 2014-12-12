@@ -1,4 +1,4 @@
 shop_bonus_card_homepage:
     resource: "@ShopBonusCardBundle/Controller"
     type:     annotation
-    prefix:   /
+    prefix:   /cards

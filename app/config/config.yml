@@ -25,21 +25,21 @@ security:
             security: false
 
         admin_secured_area:
-            pattern:   ^/admin
+            pattern:   ^/cards
             anonymous: ~
             provider: in_memory
             form_login:
-                login_path: /admin/auth
-                check_path: /admin/login_check
-                username_parameter: adminform[name]
-                password_parameter: adminform[password]
+                login_path: /cards/auth
+                check_path: /cards/login_check
+                username_parameter: authform[name]
+                password_parameter: authform[password]
             logout:
-                path:   /admin/logout
-                target: /admin/auth
+                path:   /cards/logout
+                target: /cards/auth
 
     access_control:
-        - { path: ^/admin/auth, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/cards/auth, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/cards, roles: ROLE_ADMIN }
 
 framework:
     secret: "denis1986"
@@ -88,6 +88,7 @@ doctrine:
                 connection: default
                 mappings:
                     ShopBonusCardBundle: ~
+                    ShopShopBundle: ~
                     gedmo_translatable:
                         type: annotation
                         prefix: Gedmo\Translatable\Entity

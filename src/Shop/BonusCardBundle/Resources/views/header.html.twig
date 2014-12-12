@@ -1,0 +1,4 @@
+{% if app.security.isGranted('ROLE_ADMIN') %}
+	<a href="{{ path('admin_logout') }}">Выход</a> | <a href="{{ path('card_main') }}">Главная</a>
+{% endif %}
+<hr color="#ccc" />

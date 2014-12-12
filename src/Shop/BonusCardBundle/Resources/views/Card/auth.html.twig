@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Авторизация</title>
+		<style>
+		* {
+			margin: 0px;
+			padding: 0px;
+		}
+		html {
+			height: 100%;
+		}
+		body {
+			position: relative;
+			min-height: 100%;
+		}
+		#content {
+			width: 280px;
+			height: 155px;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-left: -140px;
+			margin-top: -77px;
+			border-radius: 20px;
+			box-shadow: 0 0 10px rgba(0,0,0,0.5);
+		}
+		#content.with-error {
+			height: 170px;
+			margin-top: -85px;
+		}
+		#content .inner {
+			padding: 20px;
+		}
+		#authform > div {
+			margin: 5px 0; 
+		}
+		#authform input[type="password"],
+		#authform input[type="text"] {
+			padding: 3px;
+			border: 1px solid #999;
+			border-radius: 3px;
+			margin-left: 10px;
+		}
+		#authform > div > label {
+			width: 60px;
+			display: inline-block;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="content" {% if error %}class="with-error"{% endif %}>
+			<div class="inner">
+				<p><strong>Авторизация</strong></p>
+				{% if error %}
+				    <p style="color: red;">{{ error.message }}</p>
+				{% endif %}
+				{{ form(form) }}
+			</div>
+		</div>
+	</body>
+</html>

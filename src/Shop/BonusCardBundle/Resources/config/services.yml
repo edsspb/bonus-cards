@@ -2,6 +2,18 @@ parameters:
 #    shop_bonus_card.example.class: Shop\BonusCardBundle\Example
 
 services:
-#    shop_bonus_card.example:
-#        class: %shop_bonus_card.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    shop_bonus_card.cards_manager:
+        class: Shop\BonusCardBundle\Services\CardsManager
+        arguments: [@doctrine, @service_container, @security.context]
+
+    shop_bonus_card.form.type.auth:
+        class: Shop\BonusCardBundle\Form\AuthType
+        arguments: [@session]
+        tags:
+            - { name: form.type, alias: authform }
+
+    shop_bonus_card.form.type.cards:
+        class: Shop\BonusCardBundle\Form\CardsType
+        arguments: [@session]
+        tags:
+            - { name: form.type, alias: cardsform }

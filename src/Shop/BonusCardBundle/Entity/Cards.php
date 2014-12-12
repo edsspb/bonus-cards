@@ -7,6 +7,7 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Event\LifecycleEventArgs;
+use Shop\ShopBundle\Entity;
 
 /**
  * Card
@@ -76,7 +77,7 @@ class Cards
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Shop\BonusCardBundle\Entity\Orders", mappedBy="cards")
+     * @ORM\OneToMany(targetEntity="Shop\ShopBundle\Entity\Orders", mappedBy="cards")
      */
     private $orders;
 
@@ -204,6 +205,16 @@ class Cards
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Get ArrayCollection Cards::orders
+     *
+     * @return ArrayCollection Cards::orders 
+     */
+    public function getOrders()
+    {
+        return $this->orders;
     }
 
     /** @ORM\PrePersist */

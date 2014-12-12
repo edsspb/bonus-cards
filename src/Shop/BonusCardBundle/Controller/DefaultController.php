@@ -15,4 +15,12 @@ class DefaultController extends Controller
 	{
         parent::setContainer($container);
     }
+
+    /**
+     * @return CardsManager
+     */
+    protected function getCardsManager()
+    {
+        return $this->container->get('shop_bonus_card.cards_manager');
+    }
 }
