@@ -14,8 +14,11 @@
             <!-- /FOOTER -->
 
             <!-- CONTENT -->
-            <section class="content">
-                {% block content %}{% endblock %}
+            <section class="content admin">
+                <h1>{% block pagetitle %}{% endblock %}</h1>
+                <div class="inner">
+                    {% block content %}{% endblock %}
+                </div><!--/.inner-->
             </section><!--/.content-->
             <!-- /CONTENT -->
 

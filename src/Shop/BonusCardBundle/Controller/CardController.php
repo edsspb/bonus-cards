@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\SecurityContext;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Shop\BonusCardBundle\Entity\Cards;
 
 class CardController extends DefaultController
 {
@@ -47,6 +48,43 @@ class CardController extends DefaultController
     * @Template()
     */
     public function indexAction(Request $request)
+    {
+        return [];
+    }
+
+    /**
+    * @Route("/make/", name="card_make")
+    * @Template()
+    */
+    public function makeAction(Request $request)
+    {
+        $form = $this->createForm('makecardsform', null, array(
+            'action' => $this->generateUrl('card_make'),
+            'method' => 'POST',
+        ));
+        $form->handleRequest($request);
+
+        if($form->isValid()) {
+            $data = $request->request->all();
+            echo '<pre>'; print_r($data); die();
+            $em = $this->getDoctrine()->getManager(); 
+            foreach($data as $item) {
+                $cards = new Cards();
+                $em->persist($cards);
+            }
+            $em->flush();
+        }
+
+        return [
+            'form' => $form->createView()
+        ];
+    }
+
+    /**
+    * @Route("/show/", name="card_show")
+    * @Template()
+    */
+    public function showAction(Request $request)
     {
         return [];
     }

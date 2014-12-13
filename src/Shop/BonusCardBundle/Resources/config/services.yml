@@ -1,5 +1,16 @@
 parameters:
-#    shop_bonus_card.example.class: Shop\BonusCardBundle\Example
+    cards:
+        make:
+            validity:
+                keys: ['1 year', '6 months', '1 month']
+                values: ['1 год', '6 месяцев', '1 месяц']
+            constraints:
+                quantity_max: 'Значение должно быть не более '
+                quantity_min: 'Значение должно быть больше '
+                quantity_invalid: 'Должно быть указано число'
+                series_invalid: 'Должно быть указано число'
+            max_quantity: 1000
+            min_quantity: 0
 
 services:
     shop_bonus_card.cards_manager:
@@ -14,6 +25,11 @@ services:
 
     shop_bonus_card.form.type.cards:
         class: Shop\BonusCardBundle\Form\CardsType
-        arguments: [@session]
         tags:
             - { name: form.type, alias: cardsform }
+
+    shop_bonus_card.form.type.makecards:
+        class: Shop\BonusCardBundle\Form\MakeCardsType
+        arguments: [@doctrine, @service_container, @security.context]
+        tags:
+            - { name: form.type, alias: makecardsform }

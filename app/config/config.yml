@@ -31,6 +31,7 @@ security:
             form_login:
                 login_path: /cards/auth
                 check_path: /cards/login_check
+                default_target_path: /cards
                 username_parameter: authform[name]
                 password_parameter: authform[password]
             logout:

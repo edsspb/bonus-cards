@@ -4,6 +4,13 @@
     Административная панель
 {% endblock %}
 
+{% block pagetitle %}
+	Бонусные карты
+{% endblock %}
+
 {% block content %}
-    <p>Контент</p>
+    <ul>
+    	<li><a href="{{ path('card_make') }}">Создание новых бонусных карт</a></li>
+    	<li><a href="{{ path('card_show') }}">Бонусные карты</a></li>
+    </ul>
 {% endblock %}
