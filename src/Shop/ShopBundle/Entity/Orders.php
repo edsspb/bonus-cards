@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Event\LifecycleEventArgs;
-use Shop\BonusCardBundle\Entity;
+use Shop\BonusCardBundle\Entity\Cards;
 
 /**
  * CardOrder

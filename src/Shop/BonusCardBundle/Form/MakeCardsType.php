@@ -64,6 +64,13 @@ class MakeCardsType extends AbstractType
 			'required' => true,
 			'invalid_message' => $params['constraints']['series_invalid'],
 		])
+		->add('rand', 'choice', [
+			'choices' => ["1" => "Да", "0" => "Нет"],
+			'label' => 'Генерировать случайные номера карт',
+			'required' => true,
+			'expanded' => true,
+  			'multiple' => false
+		])
 		->add('save', 'submit', ['label' => 'Создать бонусные карты']);
 	}
 

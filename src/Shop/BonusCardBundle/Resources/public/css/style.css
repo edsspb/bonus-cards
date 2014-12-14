@@ -66,7 +66,7 @@ section.content.admin ul li {
 	font-style: italic;
 	color: red;
 	list-style: none;
-	font-size: 11px;
+	font-size: 12px;
 	margin-left: 0px;
 }
 
@@ -78,6 +78,18 @@ section.content.admin ul li {
 	padding: 3px;
 	border: 1px solid #999;
 	border-radius: 3px;
+}
+
+#makecardsform input[type="radio"] {
+	width: 12px;
+	height: 12px;
+	border-radius: 5px;
+	display: inline-block;
+}
+
+#makecardsform input[type="radio"] + label {
+	margin-right: 10px;
+	display: inline-block;
 }
 
 #makecardsform input[type="submit"],
@@ -96,4 +108,56 @@ section.content.admin ul li {
 	border-radius: 5px;
 	border: 1px solid #999;
 	margin-top: 20px;
+}
+
+#makecardsform label[for="makecardsform_series"] + span {
+	position: relative;
+}
+
+#makecardsform_series_btn {
+	position: absolute;
+	top: -23px;
+	left: 185px;
+	width: 23px;
+	height: 23px;
+	cursor: pointer;
+}
+
+#makecardsform_series_btn:after {
+	content: '';
+	position: absolute;
+	top: 12px;
+	left: 8px;
+	border: 3px solid transparent;
+	border-top-color: black;
+	-moz-transform: scaleY(2); /* Для Firefox */
+    -ms-transform: scaleY(2); /* Для IE */
+    -webkit-transform: scaleY(2); /* Для Safari, Chrome, iOS */
+    -o-transform: scaleY(2); /* Для Opera */
+	transform: scaleY(2);
+}
+
+#makecardsform_series_list {
+	position: absolute;
+	width: 206px;
+	background-color: white;
+	border: 1px solid #999;
+	border-radius: 0 0 3px 3px;
+	max-height: 300px;
+	overflow: auto;
+}
+
+#makecardsform_series_list > div > ul > li {
+	list-style: none;
+	margin-left: 0px;
+	display: block;
+	/*border-bottom: 1px solid #999;*/
+	cursor: pointer;
+	padding: 3px 6px;
+	font-size: 12px;
+}
+
+#makecardsform_series_list > div > ul > li:hover {
+	background-color: #1e90ff;
+	color: white;
 }

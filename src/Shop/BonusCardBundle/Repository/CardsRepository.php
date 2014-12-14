@@ -16,5 +16,19 @@ use Doctrine\ORM\QueryBuilder;
  */
 class CardsRepository extends EntityRepository
 {
-	
+	public function getMaxNumber($series) {
+		$querybuilder = $this->createQueryBuilder('c')
+            ->select('MAX(c.number)')
+            ->where('c.series = :series')
+            ->setParameters([
+            	':series' => $series,
+            ]);
+        return $querybuilder->getQuery()->getSingleResult();
+	}
+
+	public function getCardsSeries() {
+		$querybuilder = $this->createQueryBuilder('c')
+            ->select('DISTINCT(c.series)');
+        return $querybuilder->getQuery()->getArrayResult();
+	}
 }
