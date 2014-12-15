@@ -123,6 +123,16 @@ section.content.admin ul li {
 	cursor: pointer;
 }
 
+.firefox #makecardsform_series_btn {
+	top: -20px;
+	left: 142px;
+}
+
+.msie #makecardsform_series_btn {
+	top: 17px;
+	left: 142px;
+}
+
 #makecardsform_series_btn:after {
 	content: '';
 	position: absolute;
