@@ -155,8 +155,9 @@ jQuery(function($){
 			}).fail(function() {
 				alert(cardsActions.errorMsg);
 			}).always(function() {
-				cardsActions.stopSpinner();
 				cardsActions.loadFlag = false;
+				cardsActions.loadId = null;
+				cardsActions.stopSpinner($this);
 			});
 		},
 		setSpinner: function($this) {
@@ -167,7 +168,7 @@ jQuery(function($){
 			}
 			$this.find('.spinner-container').html(cardsActions.spinner.el).show();
 		},
-		stopSpinner: function() {
+		stopSpinner: function($this) {
 			cardsActions.spinner.stop();
 			$this.find('.spinner-container').hide();
 		}
