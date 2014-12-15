@@ -23,7 +23,7 @@ class CardsRepository extends EntityRepository
             ->setParameters([
             	':series' => $series,
             ]);
-        return $querybuilder->getQuery()->getSingleResult();
+        return $querybuilder->getQuery()->getSingleScalarResult();
 	}
 
 	public function getCardsSeries() {

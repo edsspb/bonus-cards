@@ -11,4 +11,26 @@
 {% block content %}
     {{ form(form) }}
     <input type="hidden" name="card_series_get" value="{{ path('card_series_get') }}" />
+    {% if cards is not empty %}
+    	<br />
+    	<p><strong>Бонусные карты были успешно созданы:</strong></p>
+    	<br />
+    	<ul id="created-cards">
+	    	{% for item in cards %}
+	    		<li>
+	    			<a href="{{ path('card_edit', {'id' : item.getId()}) }}">
+	    				Серия № {{ item.getSeries() }},
+	    				Карта № {{ item.getNumber() }},
+	    				Статус: {{ statuses[item.getStatus()] }}
+	    			</a> | 
+	    			<a data-id="{{ item.getId() }}" class="card-btn card-activate" href="{{ path('card_activate', {'id' : item.getId()}) }}">
+	    				Активировать 
+	    			</a> | 
+	    			<a data-id="{{ item.getId() }}" class="card-btn card-delete" href="{{ path('card_delete', {'id' : item.getId()}) }}">
+	    				Удалить 
+	    			</a>
+	    		</li>
+	    	{% endfor %}
+	    </ul>
+    {% endif %}
 {% endblock %}

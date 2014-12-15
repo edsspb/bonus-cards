@@ -16,6 +16,17 @@
             <!-- CONTENT -->
             <section class="content admin">
                 <h1>{% block pagetitle %}{% endblock %}</h1>
+
+                {% if errors is not empty %}
+                    <div class="errors">
+                        <span style="color: red;">
+                        {% for error in errors %}
+                            {{ error }}<br />
+                        {% endfor %}
+                        </span>
+                    </div>
+                {% endif %}
+
                 <div class="inner">
                     {% block content %}{% endblock %}
                 </div><!--/.inner-->

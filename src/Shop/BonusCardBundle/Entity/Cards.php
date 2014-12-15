@@ -8,6 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Shop\ShopBundle\Entity;
+use Shop\BonusCardBundle\DBAL\EnumCardStatusType;
 
 /**
  * Card
@@ -69,8 +70,7 @@ class Cards
     /**
      * @var enumcardstatus
      *
-     * @ORM\Column(name="status", type="enumcardstatus", options={"default":"active"})
-     * @Assert\Choice({"active", "unactive", "expired"})
+     * @ORM\Column(name="status", type="enumcardstatus")
      */
     private $status;
 
@@ -81,6 +81,12 @@ class Cards
      */
     private $orders;
 
+    /**
+     * @var string
+     *
+     * @Assert\Type(type="string")
+     */
+    private $dateModify;
 
     /**
      * Get id
@@ -217,11 +223,25 @@ class Cards
         return $this->orders;
     }
 
+    /**
+     * Set dateModify
+     *
+     * @param string $dateModify
+     * @return Card
+     */
+    public function setDateModify($dateModify)
+    {
+        $this->dateModify = $dateModify;
+
+        return $this;
+    }
+
     /** @ORM\PrePersist */
     public function onCreate()
     {
+        $this->status = EnumCardStatusType::NONACTIVATED;
         $this->startdate = new \DateTime();
         if(is_null($this->enddate))
-            $this->enddate = $this->startdate->modify('+1 month');
+            $this->enddate = $this->startdate->modify($this->dateModify);
     }
 }

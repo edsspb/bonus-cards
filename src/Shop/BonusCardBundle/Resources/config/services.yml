@@ -11,10 +11,11 @@ parameters:
                 series_invalid: 'Должно быть указано число'
             max_quantity: 10000
             min_quantity: 0
-            rand_min_value: 1000000000
-            rand_max_value: 2147483646
             # если нет бонусных карт тогда устанавливается следующий начальный номер
             init_value: 1000000000
+            errors:
+                generate: 'Произошла ошибка при создании карты № '
+                save: 'Произошла ошибка данные не были сохранены'
 
 services:
     shop_bonus_card.cards_manager:

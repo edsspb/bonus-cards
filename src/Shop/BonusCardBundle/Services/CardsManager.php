@@ -33,7 +33,6 @@ class CardsManager
                 return $carry;
             });
 		}
-		
 		return $series;
 	}
 }
